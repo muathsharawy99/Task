@@ -14,7 +14,9 @@ class UserHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 56.h,
         title: Row(
+
           children: [
             IconButton(
               onPressed: () {},
@@ -118,7 +120,7 @@ class UserHomeScreen extends StatelessWidget {
                 activeDayColor: Colors.orangeAccent,
                 dayColor: ColorAssets.darkBlue,
                 showYears: true,
-                shrink: true,
+                shrink: false,
               ),
               SizedBox(
                 height: 50.h,

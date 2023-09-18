@@ -47,6 +47,7 @@ Widget taskCard() {
                 SizedBox(
                   width: 240.w,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       customText(
@@ -84,11 +85,15 @@ Widget taskCard() {
               SizedBox(
                 width: 10.w,
               ),
-              customText(
-                  text: "starts 12/9/2023 - ends 16/9/2023",
-                  fontSize: 13.sp,
-                  color: ColorAssets.darkBlue,
-                  fontWeight: FontWeight.bold)
+              SizedBox(
+                width: 265.w,
+                child: customText(
+                    text: "starts 12/9/2023 - ends 16/9/2023",
+                    fontSize: 13.sp,
+                    color: ColorAssets.darkBlue,
+                    overflow: TextOverflow.ellipsis,
+                    fontWeight: FontWeight.bold),
+              )
             ],
           )
         ],
