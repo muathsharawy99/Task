@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled1/core/navigation/navigation.dart';
+import 'package:untitled1/core/services/local/shared_preferences/shared_key.dart';
+import 'package:untitled1/core/services/local/shared_preferences/shared_preferences.dart';
 import 'package:untitled1/core/services/network/dio_helper/dio_helper.dart';
 import 'package:untitled1/core/services/network/dio_helper/end_points.dart';
 import '../../../../core/services/local/flutter_secure_storage/flutter_storage.dart';
@@ -19,25 +22,24 @@ class CreateDeptCubit extends Cubit<CreateDeptState> {
   var nameController = TextEditingController();
   var managerController = TextEditingController();
 
-    createDept() {
+    createDept(context) {
     emit(CreateDeptLoadingState());
     DioHelper.post(
       endPoint: EndPoints.createDept,
-      token: "${SecureStorage.getSecureData(StorageKey.token)}",
+      token: "${SharedPreference.get(SharedKeys.token)}",
        data: {
-        "name": "shahdshibbbbbbb",
+        "name": nameController.text,
       },
     ).then(
       (value) {
-        print(value.data['code']);
         if (value.data['code'] == 200 || value.data['code'] == 201) {
           print("Success");
           deptModel = DeptModel.fromJson(value.data);
+          Navigation.goPop(context);
           emit(CreateDeptSuccessState());
         } else if (value.data['code'] == 401) {
-          print("Errrrrrrrrrrrrrrrrr is ${value.data['message']}");
+          print("Error is ${value.data['message']}");
         }
-
         else {
           print("fail");
           emit(CreateDeptErrorState());

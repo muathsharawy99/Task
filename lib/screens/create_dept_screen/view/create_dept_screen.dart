@@ -68,10 +68,8 @@ class CreateNewDepartScreen extends StatelessWidget {
                     // ),
                     customButton(
                       onPressed: () {
-                        // print(cubit.nameController.text);
-                        cubit.createDept();
-                        // print(
-                        //     "${SecureStorage.getSecureData(StorageKey.token.toString())}");
+                        cubit.createDept(context);
+
                       },
                       text: "CREATE",
                       fontSize: 14.sp,

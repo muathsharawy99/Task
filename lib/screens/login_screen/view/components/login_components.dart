@@ -8,14 +8,17 @@ Widget customText({
   required String text,
   required double fontSize,
   required Color? color,
+  TextOverflow? overflow,
   FontWeight? fontWeight,
   TextAlign? textAlign,
 }) {
   return Text(
     text,
     textAlign: textAlign,
+    overflow:overflow ,
     style: GoogleFonts.roboto(
       fontSize: fontSize,
+
       color: color,
       fontWeight: fontWeight,
     ),

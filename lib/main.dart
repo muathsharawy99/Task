@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled1/core/services/local/shared_preferences/shared_preferences.dart';
 import 'package:untitled1/core/services/network/dio_helper/dio_helper.dart';
 import 'package:untitled1/screens/create_dept_screen/view-model/create_dept_cubit/creat_dept_cubit.dart';
+import 'package:untitled1/screens/create_user_screen/view-model/create_user_cubit/create_user_cubit.dart';
 import 'package:untitled1/screens/home_screen/view_model/home_cubit/home_cubit.dart';
 import 'package:untitled1/screens/login_screen/view-model/login_cubit/login_cubit.dart';
+import 'package:untitled1/screens/user_home_screen/view/user_home_screen.dart';
+import 'package:untitled1/screens/view_all_dept/view-model/view_all_dept_cubit/view_all_dept_cubit.dart';
+import 'package:untitled1/screens/view_all_users/view-model/view_all_users_cubit/view_all_users_cubit.dart';
 
 import 'screens/login_screen/view/screens/login_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreference.initShared();
   await DioHelper.init();
   runApp(const MyApp());
 }
@@ -31,8 +37,18 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => HomeCubit(),
-            ),BlocProvider(
+            ),
+            BlocProvider(
               create: (context) => CreateDeptCubit(),
+            ),
+            BlocProvider(
+              create: (context) => ViewAllDeptCubit()..getAllDept(),
+            ),
+            BlocProvider(
+              create: (context) => CreateUserCubit(),
+            ),
+            BlocProvider(
+              create: (context) => ViewAllUsersCubit()..getAllUsers(),
             ),
           ],
           child: MaterialApp(
@@ -41,7 +57,9 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               useMaterial3: true,
             ),
-            home: LoginScreen(),
+            home:
+                UserHomeScreen(),
+                // LoginScreen(),
           ),
         );
       },

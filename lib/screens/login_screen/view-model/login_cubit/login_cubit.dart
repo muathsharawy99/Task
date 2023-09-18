@@ -9,6 +9,8 @@ import 'package:untitled1/core/services/network/dio_helper/end_points.dart';
 import 'package:untitled1/screens/home_screen/view/home_screen.dart';
 import 'package:untitled1/screens/login_screen/view-model/login_cubit/login_state.dart';
 
+import '../../../../core/services/local/shared_preferences/shared_key.dart';
+import '../../../../core/services/local/shared_preferences/shared_preferences.dart';
 import '../../model/user_model.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -32,17 +34,17 @@ class LoginCubit extends Cubit<LoginState> {
       (value) {
         if (value.data['code'] == 200 || value.data['code'] == 201) {
           userModel = UserModel.fromJson(value.data);
-          SecureStorage.setSecureData(
-            "token1",
-            value.data['data']['token'],
-          );
-          print(SecureStorage.getSecureData("token1").toString());
-          print(value.data['data']['token']);
+          // SecureStorage.setSecureData(
+          //   "token1",
+          //   value.data['data']['token'],
+          // );
+          SharedPreference.set(SharedKeys.token, value.data['data']['token']);
+          // print(SecureStorage.getSecureData("token1").toString());
+          // print(value.data['data']['token']);
           Navigation.goPushAndReplacement(
             context,
             HomeScreen(),
           );
-          // SharedPreference.set(SharedKeys.token, userModel?.token);
           emit(LoginSuccessState());
         } else {
           print("fail");

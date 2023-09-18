@@ -30,7 +30,7 @@ class DioHelper {
       );
       return response;
     } catch (e) {
-      if (e is DioException && e.response?.statusCode == 404){
+      if (e is DioException && e.response?.statusCode == 422){
         final data = e.response?.data;
         final message = data['message'];
         print(message);
@@ -50,6 +50,7 @@ class DioHelper {
     try {
       dio.options.headers = {
         'Authorization': 'Bearer $token',
+        'Accept':'application/json',
       };
       var response = await dio.get(
         endPoint,
@@ -58,6 +59,12 @@ class DioHelper {
       );
       return response;
     } catch (e) {
+      if (e is DioException && e.response?.statusCode == 405){
+        final data = e.response?.data;
+        final message = data['message'];
+        print(message);
+        print("1");
+      }
       print("error $e");
       rethrow;
     }
@@ -72,6 +79,7 @@ class DioHelper {
     try {
       dio.options.headers = {
         'Authorization': 'Bearer $token',
+        'Accept':'application/json',
       };
       var response = await dio.delete(
         endPoint,
@@ -80,6 +88,12 @@ class DioHelper {
       );
       return response;
     } catch (e) {
+      if (e is DioException && e.response?.statusCode == 404){
+        final data = e.response?.data;
+        final message = data['message'];
+        print(message);
+        print("1");
+      }
       print("error $e");
       rethrow;
     }
