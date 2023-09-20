@@ -15,28 +15,30 @@ Widget customText({
   return Text(
     text,
     textAlign: textAlign,
-    overflow:overflow ,
+    overflow: overflow,
     style: GoogleFonts.roboto(
       fontSize: fontSize,
-
       color: color,
       fontWeight: fontWeight,
     ),
   );
 }
 
-Widget customTextField(
-    {required TextEditingController controller,
-    FormFieldValidator? validator,
-    required String label,
-    required TextInputType keyboardType,
-    Color? fillColor,
-    bool? obscureText}) {
+Widget customTextField({
+  required TextEditingController controller,
+  FormFieldValidator? validator,
+  required String label,
+  required TextInputType keyboardType,
+  Color? fillColor,
+  int? maxLines,
+  bool? obscureText,
+}) {
   return TextFormField(
     controller: controller,
     keyboardType: keyboardType,
     obscureText: obscureText ?? false,
     validator: validator,
+    maxLines: maxLines ?? 1,
     decoration: InputDecoration(
       labelText: label,
       filled: true,

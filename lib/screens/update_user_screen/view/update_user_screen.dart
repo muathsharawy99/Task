@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled1/screens/add_task_screen/view/add_task_screen.dart';
 import 'package:untitled1/screens/view_all_dept/view-model/view_all_dept_cubit/view_all_dept_cubit.dart';
 
 import '../../../core/colors/colorAssets.dart';
+import '../../../core/navigation/navigation.dart';
 import '../../login_screen/view/components/login_components.dart';
 import '../../view_all_dept/view-model/view_all_dept_cubit/view_all_dept_state.dart';
 import '../../view_all_users/view-model/view_all_users_cubit/view_all_users_cubit.dart';
@@ -41,17 +43,15 @@ class UpdateUserScreen extends StatelessWidget {
                       width: double.infinity,
                     ),
                     customText(
-                      text: "Update User Details!",
-                      fontSize: 34.sp,
-                      color: ColorAssets.darkBlue,
-                      textAlign: TextAlign.center
-                    ),
+                        text: "Update User Details!",
+                        fontSize: 34.sp,
+                        color: ColorAssets.darkBlue,
+                        textAlign: TextAlign.center),
                     SizedBox(
                       height: 20.h,
                     ),
                     customText(
-                      text:
-                          "Update user details and give them a new identity.",
+                      text: "Update user details and give them a new identity.",
                       fontSize: 16.sp,
                       textAlign: TextAlign.center,
                       color: ColorAssets.greyText,
@@ -100,13 +100,14 @@ class UpdateUserScreen extends StatelessWidget {
                     SizedBox(
                       height: 20.h,
                     ),
-
                     customButton(
                       onPressed: () {
-                        ///TODO : Update
-                        cubit.updateUser(id,context);
+                        cubit.updateUser(
+                          id,
+                          context,
+                        );
                       },
-                      text: "Update",
+                      text: "Update User Data",
                       fontSize: 14.sp,
                       width: 312.w,
                       height: 48.h,
@@ -117,12 +118,34 @@ class UpdateUserScreen extends StatelessWidget {
                     SizedBox(
                       height: 20.h,
                     ),
+                    ///TODO : ADD TASK
+                    // customButton(
+                    //   onPressed: () {
+                    //     ///TODO : Add
+                    //     Navigation.goPush(
+                    //       context,
+                    //       AddTaskScreen(
+                    //         id: id,
+                    //       ),
+                    //     );
+                    //   },
+                    //   text: "Add Task",
+                    //   fontSize: 14.sp,
+                    //   width: 312.w,
+                    //   height: 48.h,
+                    //   radius: 4.r,
+                    //   textColor: Colors.white,
+                    //   bGColor: ColorAssets.darkBlue,
+                    // ),
+                    // SizedBox(
+                    //   height: 20.h,
+                    // ),
                     customButton(
                       onPressed: () {
                         ///TODO : Delete
                         // cubit.deleteDept(id,context);
                       },
-                      text: "Delete",
+                      text: "Delete User",
                       fontSize: 14.sp,
                       width: 312.w,
                       height: 48.h,
@@ -130,6 +153,7 @@ class UpdateUserScreen extends StatelessWidget {
                       textColor: Colors.white,
                       bGColor: Colors.red,
                     ),
+                    SizedBox(height: 20.h,),
                   ],
                 ),
               ),

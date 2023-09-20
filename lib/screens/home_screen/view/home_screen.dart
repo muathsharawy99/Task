@@ -11,6 +11,7 @@ import '../../../components/dept_grid/dept_grid.dart';
 import '../../create_dept_screen/view/create_dept_screen.dart';
 import '../../create_user_screen/view/create_user_screen.dart';
 import '../../view_all_dept/view/view_all_dept_screen.dart';
+import '../../view_all_employees/view/view_all_employees_screen.dart';
 import '../../view_all_users/view/view_all_users_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -122,81 +123,153 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 50.h,
               ),
-              ListTile(
-                tileColor: Colors.green,
-                onTap: () {
-                  Navigation.goPush(
-                    context,
-                    CreateNewDepartScreen(),
-                  );
-                },
-                leading: Icon(
-                  Icons.exposure_plus_1,
-                  color: Colors.white,
+              Container(
+                decoration: BoxDecoration(
+                  border: BorderDirectional(
+                    bottom: BorderSide(
+                      color: ColorAssets.greyText,
+                      width: 2.w,
+                      strokeAlign: BorderSide.strokeAlignInside,
+                    ),
+                  ),
                 ),
-                title: Text(
-                  "Add New Dept",
-                  style: TextStyle(
-                    color: Colors.white,
+                child: ListTile(
+                  onTap: () {
+                    Navigation.goPush(
+                      context,
+                      CreateNewDepartScreen(),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.add_box_outlined,
+                    color: ColorAssets.darkBlue,
+                  ),
+                  title: Text(
+                    "Add New Dept",
+                    style: TextStyle(
+                      color: ColorAssets.darkBlue,
+                    ),
                   ),
                 ),
               ),
-              ListTile(
-                tileColor: Colors.green,
-                onTap: () {
-                  Navigation.goPush(
-                    context,
-                    ViewAllDeptScreen(),
-                  );
-                },
-                leading: Icon(
-                  Icons.exposure_plus_1,
-                  color: Colors.white,
+              Container(
+                decoration: BoxDecoration(
+                  border: BorderDirectional(
+                    bottom: BorderSide(
+                      color: ColorAssets.greyText,
+                      width: 2.w,
+                      strokeAlign: BorderSide.strokeAlignInside,
+                    ),
+                  ),
                 ),
-                title: Text(
-                  "View Departments",
-                  style: TextStyle(
-                    color: Colors.white,
+                child: ListTile(
+                  onTap: () {
+                    Navigation.goPush(
+                      context,
+                      ViewAllDeptScreen(),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.category_outlined,
+                    color: ColorAssets.darkBlue,
+                  ),
+                  title: Text(
+                    "View Departments",
+                    style: TextStyle(
+                      color: ColorAssets.darkBlue,
+                    ),
                   ),
                 ),
               ),
-              ListTile(
-                tileColor: Colors.yellow,
-                onTap: () {
-                  Navigation.goPush(
-                    context,
-                    CreateUserScreen(),
-                  );
-                },
-                leading: Icon(
-                  Icons.exposure_plus_1,
-                  color: Colors.black,
+              Container(
+                decoration: BoxDecoration(
+                  border: BorderDirectional(
+                    bottom: BorderSide(
+                      color: ColorAssets.greyText,
+                      width: 2.w,
+                      strokeAlign: BorderSide.strokeAlignInside,
+                    ),
+                  ),
                 ),
-                title: Text(
-                  "Add New User",
-                  style: TextStyle(
-                    color: Colors.black,
+                child: ListTile(
+                  onTap: () {
+                    Navigation.goPush(
+                      context,
+                      CreateUserScreen(),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.person_add_alt_outlined,
+                    color: ColorAssets.darkBlue,
+                  ),
+                  title: Text(
+                    "Add New User",
+                    style: TextStyle(
+                      color: ColorAssets.darkBlue,
+                    ),
                   ),
                 ),
               ),
-              ListTile(
-                tileColor: Colors.yellow,
-                onTap: () {
-                  Navigation.goPush(
-                    context,
-                    ViewAllUsersScreen(),
-                  );
-                },
-                leading: Icon(
-                  Icons.update,
-                  color: Colors.black,
-                ),
-                title: Text(
-                  "View Users",
-                  style: TextStyle(
-                    color: Colors.black,
+              Container(
+                decoration: BoxDecoration(
+                  border: BorderDirectional(
+                    bottom: BorderSide(
+                      color: ColorAssets.greyText,
+                      width: 2.w,
+                      strokeAlign: BorderSide.strokeAlignInside,
+                    ),
                   ),
                 ),
+                child: ListTile(
+                  onTap: () {
+                    Navigation.goPush(
+                      context,
+                      ViewAllUsersScreen(),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.person_search_outlined,
+                    color: ColorAssets.darkBlue,
+                  ),
+                  title: Text(
+                    "Update Users",
+                    style: TextStyle(
+                      color: ColorAssets.darkBlue,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  border: BorderDirectional(
+                    bottom: BorderSide(
+                      color: ColorAssets.greyText,
+                      width: 2.w,
+                      strokeAlign: BorderSide.strokeAlignInside,
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  onTap: () {
+                    Navigation.goPush(
+                      context,
+                      ViewAllEmployeesScreen(),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.add_alarm_rounded,
+                    color: ColorAssets.darkBlue,
+                  ),
+                  title: Text(
+                    "Add Task",
+                    style: TextStyle(
+                      color: ColorAssets.darkBlue,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 160.h,
               ),
               ListTile(
                 tileColor: Colors.red,
@@ -204,7 +277,7 @@ class HomeScreen extends StatelessWidget {
                   cubit.logout(context);
                 },
                 leading: Icon(
-                  Icons.logout,
+                  Icons.logout_outlined,
                   color: Colors.white,
                 ),
                 title: Text(

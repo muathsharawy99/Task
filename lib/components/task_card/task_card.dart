@@ -93,7 +93,7 @@ Widget taskCard() {
                     color: ColorAssets.darkBlue,
                     overflow: TextOverflow.ellipsis,
                     fontWeight: FontWeight.bold),
-              )
+              ),
             ],
           )
         ],

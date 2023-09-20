@@ -75,4 +75,25 @@ class ViewAllUsersCubit extends Cubit<ViewAllUsersState> {
     phoneController.text = allUsersModel?.data?[index].phone.toString() ?? "";
     typeController.text = allUsersModel?.data?[index].userType ?? "";
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
